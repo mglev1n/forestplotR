@@ -1,0 +1,17 @@
+Package: forestplotR
+Type: Package
+Title: Generates Forest Plots
+Version: 0.1.0
+Author: Michael G. Levin
+Maintainer: Michael Levin <mglev1n@gmail.com>
+Description: This packages takes input from a dataframe/tibble and outputs a forest plot aligned with tables to provide additional information.
+License: CC BY-NC-SA 4.0
+Encoding: UTF-8
+LazyData: true
+Imports:
+    cowplot,
+    purrr,
+    rlang,
+    scales,
+    tidyverse
+RoxygenNote: 7.0.2
