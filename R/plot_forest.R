@@ -39,7 +39,7 @@ plot_forest <- function(df, cols_left, ci_lower = ci_lower, ci_upper = ci_upper,
 
   # Create row numbers
   df <- df %>%
-    mutate(row = as.character(row_number()))
+    mutate(row = as.factor(row_number()))
 
   # Table plotting function
   plot_table <- function(x, name){
