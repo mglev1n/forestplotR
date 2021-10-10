@@ -143,8 +143,8 @@ plot_forest <- function(df, cols_left, ci_lower = ci_lower, ci_upper = ci_upper,
       geom_hline(yintercept = hline, linetype = "dotted") +
       coord_flip() +
       # facet_wrap(~outcome) +
-      scale_color_brewer(palette = "Set1", guide = FALSE) +
-      scale_radius(range = c(1, 4), guide = FALSE) +
+      scale_color_brewer(palette = "Set1", guide = "none") +
+      scale_radius(range = c(1, 4), guide = "none") +
       scale_y_continuous(trans = "log2", breaks = scales::pretty_breaks(), limits = c(xmin, xmax)) +
       # scale_y_continuous(oob = scales::squish) +
       theme_light(base_size = font_size) +
@@ -175,8 +175,8 @@ plot_forest <- function(df, cols_left, ci_lower = ci_lower, ci_upper = ci_upper,
       geom_hline(yintercept = hline, linetype = "dotted") +
       coord_flip() +
       # facet_wrap(~outcome) +
-      scale_color_brewer(palette = "Set1", guide = FALSE) +
-      scale_radius(range = c(1, 4), guide = FALSE) +
+      scale_color_brewer(palette = "Set1", guide = "none") +
+      scale_radius(range = c(1, 4), guide = "none") +
       scale_y_continuous(breaks = scales::pretty_breaks(), limits = c(xmin, xmax)) +
       # scale_y_continuous(oob = scales::squish) +
       theme_light(base_size = font_size) +
