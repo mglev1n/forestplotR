@@ -33,6 +33,16 @@ plot_forest <- function(df, cols_left, ci_lower = ci_lower, ci_upper = ci_upper,
   ci_upper <- enquo(ci_upper)
   p_value <- enquo(p_value)
 
+  # Check input values
+  checkmate::assert_choice(style, c("OR", "Beta"))
+  checkmate::assert_number(ci_signif)
+  checkmate::assert_number(effect_signif)
+  checkmate::assert_number(size)
+  checkmate::assert_number(xmin)
+  checkmate::assert_number(xmax)
+  checkmate::assert_number(hline)
+  checkmate::assert_number(font_size)
+
   # Create arrows for CI if outside plotting area
   df <- df %>%
     mutate(

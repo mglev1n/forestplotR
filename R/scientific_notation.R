@@ -8,8 +8,11 @@
 #' @export
 #'
 #' @examples
+#' scientific_notation(10000)
 #'
 scientific_notation <- function(l, n) {
+  checkmate::assert_numeric(l)
+  checkmate::assert_numeric(n)
   parse_scientific <- function(l, n) {
     if (l >= 10^-n) {
       return(l)

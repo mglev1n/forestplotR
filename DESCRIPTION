@@ -9,6 +9,7 @@ License: CC BY-NC-SA 4.0
 Encoding: UTF-8
 LazyData: true
 Imports:
+    checkmate,
     cowplot,
     dplyr,
     ggplot2,
