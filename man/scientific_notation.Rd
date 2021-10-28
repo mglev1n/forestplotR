@@ -18,5 +18,6 @@ A character string containing the input string transformed into scientific notat
 \code{scientific_notation} is a function that takes a character string and returns a character string reformatted to scientific notation
 }
 \examples{
+scientific_notation(0.00001, 3)
 
 }

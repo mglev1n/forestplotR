@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples
-#' scientific_notation(10000)
+#' scientific_notation(0.00001, 3)
 #'
 scientific_notation <- function(l, n) {
   checkmate::assert_numeric(l)

@@ -18,7 +18,7 @@ plot_forest(
   width_ratio = c(1, 1, 1),
   xmin = 0.5,
   xmax = 2,
-  hline = 1,
+  hline = NULL,
   style = "OR",
   font_size = 12
 )
@@ -50,7 +50,7 @@ plot_forest(
 
 \item{xmax}{Integer representing the lower limit of the forest plot. If less than the greatest value of the upper confidence interval, forest plot values will be truncated with an arrow. The upper confidence interval column can be passed in the following code to ensure no truncation occurs \code{xmin = min(c(1,.$or_lci95))}}
 
-\item{hline}{Integer representing the location of vertical lines to be placed on the forest plot, useful for describing the origin (eg. \code{hline = 0} when plotting Odds Ratios, and \code{hline = 0} for betas)}
+\item{hline}{Integer representing the location of vertical lines to be placed on the forest plot, useful for describing the origin (eg. \code{hline = 1} when plotting Odds Ratios, and \code{hline = 0} for betas)}
 
 \item{style}{String Either "OR" or "Beta" representing the format of the effect estimate, used for setting axis style and effect-estimate column headings}
 

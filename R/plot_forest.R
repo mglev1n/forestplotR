@@ -14,7 +14,7 @@
 #' @param width_ratio Vector of integers representing relative widths of pieces of final plot. There should be one integer for each column passed to cols_left, the forest plot, and the results table.
 #' @param xmin Integer representing the lower limit of the forest plot. If greater than the lowest value of the lower confidence interval, forest plot values will be truncated with an arrow. The lower confidence interval column can be passed in the following code to ensure no truncation occurs \code{xmin = min(c(1,.$or_lci95))}.
 #' @param xmax Integer representing the lower limit of the forest plot. If less than the greatest value of the upper confidence interval, forest plot values will be truncated with an arrow. The upper confidence interval column can be passed in the following code to ensure no truncation occurs \code{xmin = min(c(1,.$or_lci95))}
-#' @param hline Integer representing the location of vertical lines to be placed on the forest plot, useful for describing the origin (eg. \code{hline = 0} when plotting Odds Ratios, and \code{hline = 0} for betas)
+#' @param hline Integer representing the location of vertical lines to be placed on the forest plot, useful for describing the origin (eg. \code{hline = 1} when plotting Odds Ratios, and \code{hline = 0} for betas)
 #' @param style String Either "OR" or "Beta" representing the format of the effect estimate, used for setting axis style and effect-estimate column headings
 #' @param font_size Integer representing default font size
 #'
@@ -25,13 +25,22 @@
 #' @examples
 #' plot_forest(mr_res_example, cols_left = dplyr::vars("Protein" = exposure), effect = or, effect_signif = 3, ci_lower = or_lci95, ci_upper = or_uci95, ci_signif = 3, p_value = pval, width_ratio = c(0.5, 3, 1.5), xmin = min(c(1, mr_res_example$or_lci95)), xmax = max(c(1, mr_res_example$or_uci95)), style = "OR")
 #'
-plot_forest <- function(df, cols_left, ci_lower = ci_lower, ci_upper = ci_upper, ci_signif = 2, color = NULL, effect = effect, effect_signif = 2, p_value = p_value, size = 2, width_ratio = c(1, 1, 1), xmin = 0.5, xmax = 2, hline = 1, style = "OR", font_size = 12) {
+plot_forest <- function(df, cols_left, ci_lower = ci_lower, ci_upper = ci_upper, ci_signif = 2, color = NULL, effect = effect, effect_signif = 2, p_value = p_value, size = 2, width_ratio = c(1, 1, 1), xmin = 0.5, xmax = 2, hline = NULL, style = "OR", font_size = 12) {
   color <- enquo(color)
   pointsize <- enquo(size)
   or <- enquo(effect)
   ci_lower <- enquo(ci_lower)
   ci_upper <- enquo(ci_upper)
   p_value <- enquo(p_value)
+
+  # Set hline default if not provided
+  if(!is.null(hline)) {
+    hline <- hline
+  } else if (style == "OR") {
+    hline <- 1
+  } else if (style == "Beta" ) {
+    hline <- 0
+  }
 
   # Check input values
   checkmate::assert_choice(style, c("OR", "Beta"))
