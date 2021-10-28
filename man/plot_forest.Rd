@@ -57,11 +57,12 @@ plot_forest(
 \item{font_size}{Integer representing default font size}
 }
 \value{
-
+A ggplot object containing a forest plot
 }
 \description{
 \code{plot_forest} is a function that takes a data frame that at minimum contains columns containing an effect estimate, upper and lower confidence interval bounds, and p-values. The function returns a forest plot aligned with a data table containing this information. Additional variables may be displayed in a table to the left of the plot by passing their names to the \code{cols_left} argument.
 }
 \examples{
+plot_forest(mr_res_example, cols_left = dplyr::vars("Protein" = exposure), effect = or, effect_signif = 3, ci_lower = or_lci95, ci_upper = or_uci95, ci_signif = 3, p_value = pval, width_ratio = c(0.5, 3, 1.5), xmin = min(c(1, mr_res_example$or_lci95)), xmax = max(c(1, mr_res_example$or_uci95)), style = "OR")
 
 }

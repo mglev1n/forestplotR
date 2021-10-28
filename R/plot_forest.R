@@ -18,10 +18,12 @@
 #' @param style String Either "OR" or "Beta" representing the format of the effect estimate, used for setting axis style and effect-estimate column headings
 #' @param font_size Integer representing default font size
 #'
-#' @return
+#' @return A ggplot object containing a forest plot
+#'
 #' @export
 #'
 #' @examples
+#' plot_forest(mr_res_example, cols_left = dplyr::vars("Protein" = exposure), effect = or, effect_signif = 3, ci_lower = or_lci95, ci_upper = or_uci95, ci_signif = 3, p_value = pval, width_ratio = c(0.5, 3, 1.5), xmin = min(c(1, mr_res_example$or_lci95)), xmax = max(c(1, mr_res_example$or_uci95)), style = "OR")
 #'
 plot_forest <- function(df, cols_left, ci_lower = ci_lower, ci_upper = ci_upper, ci_signif = 2, color = NULL, effect = effect, effect_signif = 2, p_value = p_value, size = 2, width_ratio = c(1, 1, 1), xmin = 0.5, xmax = 2, hline = 1, style = "OR", font_size = 12) {
   color <- enquo(color)
@@ -41,7 +43,7 @@ plot_forest <- function(df, cols_left, ci_lower = ci_lower, ci_upper = ci_upper,
     ) %>%
     mutate(ci_lower = !!ci_lower,
            ci_upper = !!ci_upper) %>%
-    mutate(CI = glue("[{signif(ci_lower, ci_signif)}, {signif(ci_upper, ci_signif)}]"))
+    mutate(CI = glue::glue("[{signif(ci_lower, ci_signif)}, {signif(ci_upper, ci_signif)}]"))
 
   # Create row numbers
   df <- df %>%
@@ -71,7 +73,7 @@ plot_forest <- function(df, cols_left, ci_lower = ci_lower, ci_upper = ci_upper,
   # Create left table
   table_list_left <- df %>%
     select(!!!cols_left) %>%
-    imap(plot_table)
+    purrr::imap(plot_table)
 
   # return(cowplot::plot_grid(plotlist = c(table_list_left, table_list_left), align = c("h"), nrow = 1))
   # return(map(table_list_left, ggplotGrob))

@@ -29,5 +29,5 @@ scientific_notation <- function(l, n) {
       # return this as an expression
       return(l)
     }}
-  return(map_chr(l, parse_scientific, n))
+  return(purrr::map_chr(l, parse_scientific, n))
 }
