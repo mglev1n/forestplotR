@@ -6,6 +6,8 @@
 \alias{forestplotR-package}
 \title{forestplotR: Generates Forest Plots}
 \description{
+\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+
 This packages takes input from a dataframe/tibble and outputs a forest plot aligned with tables to provide additional information.
 }
 \seealso{

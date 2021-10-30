@@ -5,7 +5,7 @@ Version: 0.2.0
 Author: Michael G. Levin
 Maintainer: Michael Levin <mglev1n@gmail.com>
 Description: This packages takes input from a dataframe/tibble and outputs a forest plot aligned with tables to provide additional information.
-License: CC BY-NC-SA 4.0
+License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Imports:
