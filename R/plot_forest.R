@@ -158,9 +158,9 @@ plot_forest <- function(df, cols_left, ci_lower = ci_lower, ci_upper = ci_upper,
       ggplot(aes(row, !!or, ymin = ci_lower, ymax = ci_upper, color = !!color)) +
       # geom_errorbar(width = 0) +
       geom_point(aes(size = !!pointsize), shape = 15) +
-      geom_segment(aes(x = row, xend = row, y = !!or, yend = ci_lower_plot), arrow = arrow(type = "open", length = unit(df$ci_lower_arrow, "lines"))) +
-      geom_segment(aes(x = row, xend = row, y = !!or, yend = ci_upper_plot), arrow = arrow(type = "open", length = unit(df$ci_upper_arrow, "lines"))) +
-      # geom_pointrange(shape = 15) +
+      # geom_segment(aes(x = row, xend = row, y = !!or, yend = ci_lower_plot), arrow = arrow(type = "open", length = unit(df$ci_lower_arrow, "lines"))) +
+      # geom_segment(aes(x = row, xend = row, y = !!or, yend = ci_upper_plot), arrow = arrow(type = "open", length = unit(df$ci_upper_arrow, "lines"))) +
+      geom_pointrange(shape = 15) +
       geom_hline(yintercept = hline, linetype = "dotted") +
       coord_flip() +
       # facet_wrap(~outcome) +
@@ -190,9 +190,9 @@ plot_forest <- function(df, cols_left, ci_lower = ci_lower, ci_upper = ci_upper,
       ggplot(aes(row, !!or, ymin = ci_lower, ymax = ci_upper, color = !!color)) +
       # geom_errorbar(width = 0) +
       geom_point(aes(size = !!pointsize), shape = 15) +
-      geom_segment(aes(x = row, xend = row, y = !!or, yend = ci_lower_plot), arrow = arrow(type = "open", length = unit(df$ci_lower_arrow, "lines"))) +
-      geom_segment(aes(x = row, xend = row, y = !!or, yend = ci_upper_plot), arrow = arrow(type = "open", length = unit(df$ci_upper_arrow, "lines"))) +
-      # geom_pointrange(shape = 15) +
+      # geom_segment(aes(x = row, xend = row, y = !!or, yend = ci_lower_plot), arrow = arrow(type = "open", length = unit(df$ci_lower_arrow, "lines"))) +
+      # geom_segment(aes(x = row, xend = row, y = !!or, yend = ci_upper_plot), arrow = arrow(type = "open", length = unit(df$ci_upper_arrow, "lines"))) +
+      geom_pointrange(shape = 15) +
       geom_hline(yintercept = hline, linetype = "dotted") +
       coord_flip() +
       # facet_wrap(~outcome) +
